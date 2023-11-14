@@ -9,6 +9,7 @@ public class Orders {
   private static Map<MenuItem, Integer> orders = new HashMap<>();
 
   public Orders(String orderString) {
+    this.orders = processOrderString(orderString);
   }
   private Map<MenuItem, Integer> processOrderString(String orderString) {
     Map<MenuItem, Integer> processedOrders = new HashMap<>();
