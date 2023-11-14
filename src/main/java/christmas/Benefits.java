@@ -12,6 +12,7 @@ public class Benefits {
   private static List<Integer> benefitsList = new ArrayList<>();
   private static int benefits;
   private static int afterDiscountPrice;
+  private static String Badge;
 
   public Benefits() {
     calculateTotalPrice(Orders.getOrders());
@@ -20,6 +21,7 @@ public class Benefits {
     selectDayDiscount(Orders.getOrders());
     specialDiscount();
     promotion();
+    selectBadge();
   }
 
   private void calculateTotalPrice(Map<MenuItem, Integer> orders) {
@@ -80,6 +82,13 @@ public class Benefits {
     afterDiscountPrice=totalPrice-benefits;
   }
 
+  public void selectBadge(){
+    if (benefits>20000)Badge="산타";
+    else if (benefits>10000)Badge="트리";
+    else if (benefits>5000)Badge="별";
+    else Badge="없음";
+  }
+
   public static int getTotalPrice() {
     return totalPrice;
   }
@@ -98,5 +107,9 @@ public class Benefits {
 
   public static int getAfterDiscountPrice() {
     return afterDiscountPrice;
+  }
+
+  public static String getBadge() {
+    return Badge;
   }
 }
