@@ -11,6 +11,7 @@ public class Benefits {
   private static boolean promotion;
   private static List<Integer> benefitsList = new ArrayList<>();
   private static int benefits;
+  private static int afterDiscountPrice;
 
   public Benefits() {
     calculateTotalPrice(Orders.getOrders());
@@ -75,6 +76,10 @@ public class Benefits {
     else benefitsList.add(0);
   }
 
+  public void afterDiscountPrice(){
+    afterDiscountPrice=totalPrice-benefits;
+  }
+
   public static int getTotalPrice() {
     return totalPrice;
   }
@@ -85,5 +90,9 @@ public class Benefits {
 
   public static List<Integer> getBenefitsList() {
     return benefitsList;
+  }
+
+  public static int getAfterDiscountPrice() {
+    return afterDiscountPrice;
   }
 }
