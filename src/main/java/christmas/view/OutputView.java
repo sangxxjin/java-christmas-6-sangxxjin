@@ -18,6 +18,7 @@ public class OutputView {
   private final static String CHRISTMAS_DDAY_DISCOUNT = "크리스마스 디데이 할인";
   private static final String TOTAL_BENEFIT_AMOUNT = "<총혜택 금액>";
   private static final String EXPECTED_PAYMENT_AMOUNT_AFTER_DISCOUNT = "<할인 후 예상 결제 금액>";
+  private static final String DECEMBER_EVENT_BADGE_MESSAGE = "<12월 이벤트 배지>";
 
   public static void opening() {
     System.out.println(OPENING);
@@ -79,5 +80,9 @@ public class OutputView {
   public static void afterDiscountPrice(int afterDiscountPrice){
     System.out.println(EXPECTED_PAYMENT_AMOUNT_AFTER_DISCOUNT);
     System.out.println(afterDiscountPrice+"원"+"\n");
+  }
+  public static void badge(String badge){
+    System.out.println(DECEMBER_EVENT_BADGE_MESSAGE);
+    System.out.println(badge);
   }
 }
