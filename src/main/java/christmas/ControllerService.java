@@ -30,4 +30,15 @@ public class ControllerService {
     System.out.println();
   }
 
+  public static void benefitsRun() {
+    Benefits benefits = new Benefits();
+    OutputView.printOrderedMenu(Orders.getOrders());
+    OutputView.totalPrice(benefits.getTotalPrice());
+    OutputView.giftMenu(benefits.getPromotion());
+    OutputView.benefitsDetails(benefits.getBenefitsList());
+    OutputView.totalBenfitsAmount(benefits.getBenefits());
+    OutputView.afterDiscountPrice(benefits.getAfterDiscountPrice());
+    OutputView.badge(benefits.getBadge());
+  }
+
 }
