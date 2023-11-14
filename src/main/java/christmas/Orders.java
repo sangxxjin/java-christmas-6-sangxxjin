@@ -47,5 +47,14 @@ public class Orders {
     throw new IllegalArgumentException(errorMessage);
   }
 
+  private MenuItem findMenuItem(String itemName) {
+    for (MenuItem itemEnum : MenuItem.values()) {
+      if (itemEnum.getName().equals(itemName)) {
+        return itemEnum;
+      }
+    }
+    return null;
+  }
+
 
 }
