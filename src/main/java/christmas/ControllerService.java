@@ -17,4 +17,17 @@ public class ControllerService {
     }
   }
 
+  public static void ordersRun() {
+    while (true) {
+      try {
+        Orders putOrders = new Orders(InputView.readMenu());
+        break;
+      } catch (IllegalArgumentException e) {
+        System.out.println(e.getMessage());
+      }
+    }
+    OutputView.previewEventBenefits(Date.getDate().getDayOfMonth());
+    System.out.println();
+  }
+
 }
