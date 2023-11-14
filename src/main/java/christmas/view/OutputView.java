@@ -16,6 +16,7 @@ public class OutputView {
   private final static String GIFT_MENU = "<증정 메뉴>";
   private final static String BENEFITS_DETAILS = "<혜택 내역>";
   private final static String CHRISTMAS_DDAY_DISCOUNT = "크리스마스 디데이 할인";
+  private static final String TOTAL_BENEFIT_AMOUNT = "<총혜택 금액>";
 
   public static void opening() {
     System.out.println(OPENING);
@@ -66,5 +67,12 @@ public class OutputView {
     } else {
       System.out.println("없음"+"\n");
     }
+  }
+  public static void totalBenfitsAmount(int benefits){
+    System.out.println(TOTAL_BENEFIT_AMOUNT);
+    if (0 == benefits) {
+      System.out.println("없음"+"\n");
+    }
+    else System.out.println(MINUS+ benefits+"원"+"\n");
   }
 }
