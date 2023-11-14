@@ -17,6 +17,7 @@ public class Benefits {
     selectGift();
     christmasDiscount();
     selectDayDiscount(Orders.getOrders());
+    specialDiscount();
   }
 
   private void calculateTotalPrice(Map<MenuItem, Integer> orders) {
@@ -57,6 +58,12 @@ public class Benefits {
     }
     benefitsList.add(dayDiscount);
     benefits += benefitsList.get(1);
+  }
+
+  public void specialDiscount(){
+    if (Date.isSpecialDay(Date.getDate()))benefitsList.add(1000);
+    else benefitsList.add(0);
+    benefits+=benefitsList.get(2);
   }
 
   public static int getTotalPrice() {
