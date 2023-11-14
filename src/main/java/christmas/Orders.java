@@ -10,6 +10,16 @@ public class Orders {
 
   public Orders(String orderString) {
   }
+  private Map<MenuItem, Integer> processOrderString(String orderString) {
+    Map<MenuItem, Integer> processedOrders = new HashMap<>();
+    String[] orderItems = orderString.split(",");
+
+    for (String item : orderItems) {
+      processOrderItem(item, processedOrders);
+    }
+
+    return processedOrders;
+  }
 
   private void processOrderItem(String item, Map<MenuItem, Integer> processedOrders) {
     String[] itemDetails = item.split("-");
