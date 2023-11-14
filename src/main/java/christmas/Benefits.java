@@ -21,6 +21,7 @@ public class Benefits {
     selectDayDiscount(Orders.getOrders());
     specialDiscount();
     promotion();
+    afterDiscountPrice();
     selectBadge();
   }
 
@@ -54,14 +55,14 @@ public class Benefits {
     if (Date.isFridayOrSaturday(Date.getDate())) {
       for (Map.Entry<MenuItem, Integer> entry : orders.entrySet()) {
         if ("메인".equals(entry.getKey().getCategory())) {
-          dayDiscount += 2303;
+          dayDiscount += 2023*entry.getValue();
         }
       }
     }
     if (!Date.isFridayOrSaturday(Date.getDate())) {
       for (Map.Entry<MenuItem, Integer> entry : orders.entrySet()) {
         if ("디저트".equals(entry.getKey().getCategory())) {
-          dayDiscount += 2303;
+          dayDiscount += 2023*entry.getValue();
         }
       }
     }
@@ -89,6 +90,7 @@ public class Benefits {
 
   public void afterDiscountPrice() {
     afterDiscountPrice = totalPrice - benefits;
+    if (promotion)afterDiscountPrice+=25000;
   }
 
   public void selectBadge() {
