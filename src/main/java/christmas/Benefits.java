@@ -6,9 +6,11 @@ import java.util.Map;
 public class Benefits {
 
   private static int totalPrice;
+  private static boolean promotion;
 
   public Benefits() {
     calculateTotalPrice(Orders.getOrders());
+    selectGift();
   }
 
   private void calculateTotalPrice(Map<MenuItem, Integer> orders) {
@@ -19,7 +21,19 @@ public class Benefits {
     }
   }
 
+  private void selectGift() {
+    if (totalPrice > 120000) {
+      promotion = true;
+    } else {
+      promotion = false;
+    }
+  }
+
   public static int getTotalPrice() {
     return totalPrice;
+  }
+
+  public static boolean getPromotion() {
+    return promotion;
   }
 }
