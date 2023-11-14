@@ -30,6 +30,11 @@ public class Date {
     return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
   }
 
+  public static boolean isSpecialDay(LocalDate date){
+    DayOfWeek dayOfWeek = date.getDayOfWeek();
+    return dayOfWeek == DayOfWeek.SUNDAY || date.getDayOfMonth() == 25;
+  }
+
   public static LocalDate getDate() {
     return date;
   }
