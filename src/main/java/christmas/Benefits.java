@@ -92,6 +92,10 @@ public class Benefits {
     return benefitsList;
   }
 
+  public static int getBenefits() {
+    return benefits;
+  }
+
   public static int getAfterDiscountPrice() {
     return afterDiscountPrice;
   }
