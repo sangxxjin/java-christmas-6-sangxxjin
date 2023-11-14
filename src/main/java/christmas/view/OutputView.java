@@ -9,6 +9,7 @@ public class OutputView {
   private final static String EVENT_PREVIEW = " 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
   private final static String ORDER_MENU_HEADER = "<주문 메뉴>";
   private final static String TOTAL_ORDER_PRICE_BEFORE_DISCOUNT = "<할인 전 총주문 금액>";
+  private final static String GIFT_MENU = "<증정 메뉴>";
 
   public static void opening() {
     System.out.println(OPENING);
@@ -27,5 +28,15 @@ public class OutputView {
   public static void totalPrice(int totalPrice){
     System.out.println(TOTAL_ORDER_PRICE_BEFORE_DISCOUNT);
     System.out.println(totalPrice+"원"+"\n");
+  }
+
+  public static void giftMenu(boolean giftMenu) {
+    System.out.println(GIFT_MENU);
+    if (giftMenu) {
+      System.out.println("샴페인 1개"+"\n");
+    }
+    if (!giftMenu) {
+      System.out.println("없음"+"\n");
+    }
   }
 }
