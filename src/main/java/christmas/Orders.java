@@ -11,6 +11,7 @@ public class Orders {
   public Orders(String orderString) {
     this.orders = processOrderString(orderString);
   }
+
   private Map<MenuItem, Integer> processOrderString(String orderString) {
     Map<MenuItem, Integer> processedOrders = new HashMap<>();
     String[] orderItems = orderString.split(",");
@@ -54,6 +55,7 @@ public class Orders {
       processedOrders.put(menuItem, itemCount);
     }
   }
+
   private void handleInvalidOrder(String errorMessage) {
     throw new IllegalArgumentException(errorMessage);
   }
@@ -65,6 +67,10 @@ public class Orders {
       }
     }
     return null;
+  }
+
+  public static Map<MenuItem, Integer> getOrders() {
+    return orders;
   }
 
 
