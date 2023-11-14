@@ -41,10 +41,11 @@ public class Benefits {
   }
 
   private void christmasDiscount() {
-    if (Date.getDate().getDayOfMonth()>=1&&Date.getDate().getDayOfMonth()<=25){
+    if (Date.getDate().getDayOfMonth() >= 1 && Date.getDate().getDayOfMonth() <= 25) {
       benefitsList.add(900 + (Date.getDate().getDayOfMonth() * 100));
+    } else {
+      benefitsList.add(0);
     }
-    else benefitsList.add(0);
     benefits += benefitsList.get(0);
   }
 
@@ -52,41 +53,54 @@ public class Benefits {
     int dayDiscount = 0;
     if (Date.isFridayOrSaturday(Date.getDate())) {
       for (Map.Entry<MenuItem, Integer> entry : orders.entrySet()) {
-        if ("메인".equals(entry.getKey().getCategory())) dayDiscount += 2303;
+        if ("메인".equals(entry.getKey().getCategory())) {
+          dayDiscount += 2303;
+        }
       }
     }
     if (!Date.isFridayOrSaturday(Date.getDate())) {
       for (Map.Entry<MenuItem, Integer> entry : orders.entrySet()) {
-        if ("디저트".equals(entry.getKey().getCategory())) dayDiscount += 2303;
+        if ("디저트".equals(entry.getKey().getCategory())) {
+          dayDiscount += 2303;
+        }
       }
     }
     benefitsList.add(dayDiscount);
     benefits += benefitsList.get(1);
   }
 
-  public void specialDiscount(){
-    if (Date.isSpecialDay(Date.getDate()))benefitsList.add(1000);
-    else benefitsList.add(0);
-    benefits+=benefitsList.get(2);
-  }
-
-  public void promotion(){
-    if (promotion){
-      benefitsList.add(25000);
-      benefits+=benefitsList.get(3);
+  public void specialDiscount() {
+    if (Date.isSpecialDay(Date.getDate())) {
+      benefitsList.add(1000);
+    } else {
+      benefitsList.add(0);
     }
-    else benefitsList.add(0);
+    benefits += benefitsList.get(2);
   }
 
-  public void afterDiscountPrice(){
-    afterDiscountPrice=totalPrice-benefits;
+  public void promotion() {
+    if (promotion) {
+      benefitsList.add(25000);
+      benefits += benefitsList.get(3);
+    } else {
+      benefitsList.add(0);
+    }
   }
 
-  public void selectBadge(){
-    if (benefits>20000)Badge="산타";
-    else if (benefits>10000)Badge="트리";
-    else if (benefits>5000)Badge="별";
-    else Badge="없음";
+  public void afterDiscountPrice() {
+    afterDiscountPrice = totalPrice - benefits;
+  }
+
+  public void selectBadge() {
+    if (benefits > 20000) {
+      Badge = "산타";
+    } else if (benefits > 10000) {
+      Badge = "트리";
+    } else if (benefits > 5000) {
+      Badge = "별";
+    } else {
+      Badge = "없음";
+    }
   }
 
   public static int getTotalPrice() {
