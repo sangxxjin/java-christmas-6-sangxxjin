@@ -7,6 +7,8 @@ import java.util.Map;
 public class Orders {
 
   private static Map<MenuItem, Integer> orders = new HashMap<>();
+  private static final String INVALID_ORDER_MESSAGE = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
+
 
   public Orders(String orderString) {
     this.orders = processOrderString(orderString);
@@ -27,7 +29,7 @@ public class Orders {
     String[] itemDetails = item.split("-");
 
     if (itemDetails.length != 2) {
-      handleInvalidOrder("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+      handleInvalidOrder(INVALID_ORDER_MESSAGE);
     }
 
     String itemName = itemDetails[0];
@@ -36,21 +38,21 @@ public class Orders {
     try {
       itemCount = Integer.parseInt(itemDetails[1]);
     } catch (NumberFormatException e) {
-      handleInvalidOrder("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+      handleInvalidOrder(INVALID_ORDER_MESSAGE);
     }
 
     if (itemCount < 1) {
-      handleInvalidOrder("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+      handleInvalidOrder(INVALID_ORDER_MESSAGE);
     }
 
     MenuItem menuItem = findMenuItem(itemName);
 
     if (menuItem == null) {
-      handleInvalidOrder("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+      handleInvalidOrder(INVALID_ORDER_MESSAGE);
     }
 
     if (processedOrders.containsKey(menuItem)) {
-      handleInvalidOrder("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+      handleInvalidOrder(INVALID_ORDER_MESSAGE);
     } else {
       processedOrders.put(menuItem, itemCount);
     }
