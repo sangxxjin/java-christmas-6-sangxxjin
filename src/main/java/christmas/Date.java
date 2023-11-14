@@ -25,6 +25,11 @@ public class Date {
     return date >= 1 && date <= 31;
   }
 
+  public static boolean isFridayOrSaturday(LocalDate date) {
+    DayOfWeek dayOfWeek = date.getDayOfWeek();
+    return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
+  }
+
   public static LocalDate getDate() {
     return date;
   }
