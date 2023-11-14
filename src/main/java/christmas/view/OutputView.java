@@ -1,15 +1,21 @@
 package christmas.view;
 
+import christmas.Date;
 import christmas.enums.MenuItem;
+import java.util.List;
 import java.util.Map;
 
 public class OutputView {
+
+  private final static String MINUS = "-";
 
   private final static String OPENING = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
   private final static String EVENT_PREVIEW = " 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
   private final static String ORDER_MENU_HEADER = "<주문 메뉴>";
   private final static String TOTAL_ORDER_PRICE_BEFORE_DISCOUNT = "<할인 전 총주문 금액>";
   private final static String GIFT_MENU = "<증정 메뉴>";
+  private final static String BENEFITS_DETAILS = "<혜택 내역>";
+  private final static String CHRISTMAS_DDAY_DISCOUNT = "크리스마스 디데이 할인";
 
   public static void opening() {
     System.out.println(OPENING);
@@ -36,6 +42,28 @@ public class OutputView {
       System.out.println("샴페인 1개"+"\n");
     }
     if (!giftMenu) {
+      System.out.println("없음"+"\n");
+    }
+  }
+  public static void benefitsDetails(List<Integer> benefitsList){
+    System.out.println(BENEFITS_DETAILS);
+    boolean checkAllZero = true;
+    for (Integer value : benefitsList) {
+      if (value != 0) {
+        checkAllZero = false;
+      }
+    }
+    if (!checkAllZero) {
+      System.out.println(CHRISTMAS_DDAY_DISCOUNT + ": " + MINUS + benefitsList.get(0) + "원");
+      if (Date.isFridayOrSaturday(Date.getDate())) {
+        System.out.println("주말 할인: " + MINUS + benefitsList.get(1) + "원");
+      }
+      if (!Date.isFridayOrSaturday(Date.getDate())) {
+        System.out.println("평일 할인: " + MINUS + benefitsList.get(1) + "원");
+      }
+      System.out.println("특별 할인: " + MINUS + benefitsList.get(2) + "원");
+      System.out.println("증정 이벤트: " + MINUS + benefitsList.get(3) + "원"+"\n");
+    } else {
       System.out.println("없음"+"\n");
     }
   }
