@@ -18,9 +18,7 @@ public class Benefits {
     christmasDiscount();
     selectDayDiscount(Orders.getOrders());
     specialDiscount();
-    promotion();
-    afterDiscountPrice();
-    selectBadge(totalPrice);
+    promotion(Prices.getTotalPrice());
   }
 
   public boolean selectPromotion(int totalPrice) {
