@@ -8,7 +8,6 @@ import java.util.Map;
 public class OutputView {
 
   private final static String MINUS = "-";
-
   private final static String OPENING = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
   private final static String EVENT_PREVIEW = " 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
   private final static String ORDER_MENU_HEADER = "<주문 메뉴>";
