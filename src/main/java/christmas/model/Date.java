@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class Date {
 
-  private static LocalDate date;
+  private LocalDate date;
   private static final int YEAR = 2023;
   private static final int MONTH = 12;
   private static final int EVENT_START_DATE = 1;
@@ -42,7 +42,7 @@ public class Date {
     return dayOfWeek == DayOfWeek.SUNDAY || date.getDayOfMonth() == CHRISTMAS_DDAY;
   }
 
-  public static LocalDate getDate() {
+  public LocalDate getDate() {
     return date;
   }
 }
