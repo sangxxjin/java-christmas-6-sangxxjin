@@ -9,38 +9,41 @@ import christmas.view.OutputView;
 
 public class Controller {
 
-  public static void dateRun() {
+  public static Date dateRun() {
     OutputView.opening();
     while (true) {
       try {
         Date selectedDate = new Date(InputView.readDate());
-        break;
+        return selectedDate;
       } catch (IllegalArgumentException e) {
         System.out.println(e.getMessage());
       }
     }
   }
 
-  public static void ordersRun() {
+  public static Orders ordersRun(Date date) {
     while (true) {
       try {
         Orders putOrders = new Orders(InputView.readMenu());
-        break;
+        OutputView.previewEventBenefits(date.getDate().getDayOfMonth());
+        System.out.println();
+        return putOrders;
       } catch (IllegalArgumentException e) {
         System.out.println(e.getMessage());
       }
     }
-    OutputView.previewEventBenefits(Date.getDate().getDayOfMonth());
-    System.out.println();
+
   }
 
-  public static void benefitsRun() {
-    Prices prices = new Prices(Orders.getOrders());
-    Benefits benefits = new Benefits();
-    OutputView.printOrderedMenu(Orders.getOrders());
+  public static void Run() {
+    Date date = dateRun();
+    Orders orders = ordersRun(date);
+    Prices prices = new Prices(orders.getOrders());
+    Benefits benefits = new Benefits(prices, orders, date);
+    OutputView.printOrderedMenu(orders.getOrders());
     OutputView.totalPrice(prices.getTotalPrice());
     OutputView.giftMenu(benefits.selectPromotion(prices.getTotalPrice()));
-    OutputView.displayBenefitsDetails(benefits.getBenefitsList());
+    OutputView.displayBenefitsDetails(benefits.getBenefitsList(),date);
     OutputView.displayTotalBenefitsAmount(benefits.getBenefits());
     OutputView.afterDiscountPrice(prices.afterDiscountPrice(benefits.getBenefits()));
     OutputView.badge(benefits.selectBadge(prices.getTotalPrice()));
