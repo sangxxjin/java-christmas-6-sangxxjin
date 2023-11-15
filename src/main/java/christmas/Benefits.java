@@ -58,21 +58,13 @@ public class Benefits {
   }
 
   private void selectDayDiscount(Map<MenuItem, Integer> orders) {
-    int dayDiscount = 0;
-    if (Date.isFridayOrSaturday(Date.getDate())) {
-      for (Map.Entry<MenuItem, Integer> entry : orders.entrySet()) {
-        if ("메인".equals(entry.getKey().getCategory())) {
-          dayDiscount += WEEK_DISCOUNT_PRICE * entry.getValue();
-        }
-      }
-    }
-    if (!Date.isFridayOrSaturday(Date.getDate())) {
-      for (Map.Entry<MenuItem, Integer> entry : orders.entrySet()) {
-        if ("디저트".equals(entry.getKey().getCategory())) {
-          dayDiscount += WEEK_DISCOUNT_PRICE * entry.getValue();
-        }
-      }
-    }
+    int dayDiscount = orders.entrySet()
+        .stream()
+        .filter(entry -> (Date.isFridayOrSaturday(Date.getDate()) && "메인".equals(entry.getKey().getCategory()))
+            || (!Date.isFridayOrSaturday(Date.getDate()) && "디저트".equals(entry.getKey().getCategory())))
+        .mapToInt(entry -> WEEK_DISCOUNT_PRICE * entry.getValue())
+        .sum();
+
     benefitsList.add(dayDiscount);
     benefits += benefitsList.get(1);
   }
