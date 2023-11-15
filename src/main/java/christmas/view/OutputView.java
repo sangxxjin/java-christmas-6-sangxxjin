@@ -1,6 +1,7 @@
 package christmas.view;
 
 import christmas.Date;
+import christmas.enums.EventBadge;
 import christmas.enums.MenuItem;
 import java.util.List;
 import java.util.Map;
@@ -90,8 +91,8 @@ public class OutputView {
     System.out.println(String.format("%,d원" + "\n", afterDiscountPrice));
   }
 
-  public static void badge(String badge) {
+  public static void badge(EventBadge badge) {
     System.out.println(DECEMBER_EVENT_BADGE_MESSAGE);
-    System.out.println(badge);
+    System.out.println(badge.getName());
   }
 }
