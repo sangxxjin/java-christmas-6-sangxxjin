@@ -35,8 +35,8 @@ public class ControllerService {
     OutputView.printOrderedMenu(Orders.getOrders());
     OutputView.totalPrice(benefits.getTotalPrice());
     OutputView.giftMenu(benefits.getPromotion());
-    OutputView.benefitsDetails(benefits.getBenefitsList());
-    OutputView.totalBenefitsAmount(benefits.getBenefits());
+    OutputView.displayBenefitsDetails(benefits.getBenefitsList());
+    OutputView.displayTotalBenefitsAmount(benefits.getBenefits());
     OutputView.afterDiscountPrice(benefits.getAfterDiscountPrice());
     OutputView.badge(benefits.getBadge());
   }
