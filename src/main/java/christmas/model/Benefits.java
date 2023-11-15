@@ -7,21 +7,14 @@ import java.util.List;
 import java.util.Map;
 
 public class Benefits {
-
-  private static int totalPrice;
-  private static boolean promotion;
   private static List<Integer> benefitsList = new ArrayList<>();
   private static int benefits;
-  private static int afterDiscountPrice;
-  private static EventBadge Badge;
   private static final int CHRISTMAS_EVENT_START_DATE = 1;
   private static final int CHRISTMAS_EVENT_END_DATE = 25;
   private static final int WEEK_DISCOUNT_PRICE = 2023;
   private static final int SPECIAL_DISCOUNT_PRICE = 1000;
 
   public Benefits() {
-    calculateTotalPrice(Orders.getOrders());
-    selectGift();
     christmasDiscount();
     selectDayDiscount(Orders.getOrders());
     specialDiscount();
@@ -30,15 +23,7 @@ public class Benefits {
     selectBadge(totalPrice);
   }
 
-  private void calculateTotalPrice(Map<MenuItem, Integer> orders) {
-    for (Map.Entry<MenuItem, Integer> entry : orders.entrySet()) {
-      MenuItem menuItem = entry.getKey();
-      int itemCount = entry.getValue();
-      totalPrice += menuItem.getPrice() * itemCount;
-    }
-  }
-
-  private void selectGift() {
+  public boolean selectPromotion(int totalPrice) {
     if (totalPrice > 120000) {
       promotion = true;
     }
@@ -100,13 +85,6 @@ public class Benefits {
     Badge = EventBadge.calculateEventBadge(totalPrice);
   }
 
-  public static int getTotalPrice() {
-    return totalPrice;
-  }
-
-  public static boolean getPromotion() {
-    return promotion;
-  }
 
   public static List<Integer> getBenefitsList() {
     return benefitsList;
@@ -114,13 +92,5 @@ public class Benefits {
 
   public static int getBenefits() {
     return benefits;
-  }
-
-  public static int getAfterDiscountPrice() {
-    return afterDiscountPrice;
-  }
-
-  public static EventBadge getBadge() {
-    return Badge;
   }
 }
