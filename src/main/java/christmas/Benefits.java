@@ -13,7 +13,11 @@ public class Benefits {
   private static List<Integer> benefitsList = new ArrayList<>();
   private static int benefits;
   private static int afterDiscountPrice;
-  private static String Badge;
+  private static EventBadge Badge;
+  private static final int CHRISTMAS_EVENT_START_DATE = 1;
+  private static final int CHRISTMAS_EVENT_END_DATE = 25;
+  private static final int WEEK_DISCOUNT_PRICE = 2023;
+  private static final int SPECIAL_DISCOUNT_PRICE = 1000;
 
   public Benefits() {
     calculateTotalPrice(Orders.getOrders());
@@ -23,7 +27,7 @@ public class Benefits {
     specialDiscount();
     promotion();
     afterDiscountPrice();
-    selectBadge();
+    selectBadge(totalPrice);
   }
 
   private void calculateTotalPrice(Map<MenuItem, Integer> orders) {
@@ -43,7 +47,8 @@ public class Benefits {
   }
 
   private void christmasDiscount() {
-    if (Date.getDate().getDayOfMonth() >= 1 && Date.getDate().getDayOfMonth() <= 25) {
+    if (Date.getDate().getDayOfMonth() >= CHRISTMAS_EVENT_START_DATE
+        && Date.getDate().getDayOfMonth() <= CHRISTMAS_EVENT_END_DATE) {
       benefitsList.add(900 + (Date.getDate().getDayOfMonth() * 100));
     } else {
       benefitsList.add(0);
@@ -56,14 +61,14 @@ public class Benefits {
     if (Date.isFridayOrSaturday(Date.getDate())) {
       for (Map.Entry<MenuItem, Integer> entry : orders.entrySet()) {
         if ("메인".equals(entry.getKey().getCategory())) {
-          dayDiscount += 2023*entry.getValue();
+          dayDiscount += WEEK_DISCOUNT_PRICE * entry.getValue();
         }
       }
     }
     if (!Date.isFridayOrSaturday(Date.getDate())) {
       for (Map.Entry<MenuItem, Integer> entry : orders.entrySet()) {
         if ("디저트".equals(entry.getKey().getCategory())) {
-          dayDiscount += 2023*entry.getValue();
+          dayDiscount += WEEK_DISCOUNT_PRICE * entry.getValue();
         }
       }
     }
@@ -73,7 +78,7 @@ public class Benefits {
 
   public void specialDiscount() {
     if (Date.isSpecialDay(Date.getDate())) {
-      benefitsList.add(1000);
+      benefitsList.add(SPECIAL_DISCOUNT_PRICE);
     } else {
       benefitsList.add(0);
     }
