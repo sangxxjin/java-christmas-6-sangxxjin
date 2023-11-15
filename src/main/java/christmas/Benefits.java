@@ -92,7 +92,7 @@ public class Benefits {
   public void afterDiscountPrice() {
     afterDiscountPrice = totalPrice - benefits;
     if (promotion) {
-      afterDiscountPrice += 25000;
+      afterDiscountPrice += MenuItem.CHAMPAGNE.getPrice();
     }
   }
 
