@@ -60,8 +60,10 @@ public class Benefits {
   private void selectDayDiscount(Map<MenuItem, Integer> orders) {
     int dayDiscount = orders.entrySet()
         .stream()
-        .filter(entry -> (Date.isFridayOrSaturday(Date.getDate()) && "메인".equals(entry.getKey().getCategory()))
-            || (!Date.isFridayOrSaturday(Date.getDate()) && "디저트".equals(entry.getKey().getCategory())))
+        .filter(entry ->
+            (Date.isFridayOrSaturday(Date.getDate()) && "메인".equals(entry.getKey().getCategory()))
+                || (!Date.isFridayOrSaturday(Date.getDate()) && "디저트".equals(
+                entry.getKey().getCategory())))
         .mapToInt(entry -> WEEK_DISCOUNT_PRICE * entry.getValue())
         .sum();
 
