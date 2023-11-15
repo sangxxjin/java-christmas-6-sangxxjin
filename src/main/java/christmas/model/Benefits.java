@@ -70,15 +70,8 @@ public class Benefits {
     }
   }
 
-  public void afterDiscountPrice() {
-    afterDiscountPrice = totalPrice - benefits;
-    if (promotion) {
-      afterDiscountPrice += MenuItem.CHAMPAGNE.getPrice();
-    }
-  }
-
-  public void selectBadge(int totalPrice) {
-    Badge = EventBadge.calculateEventBadge(totalPrice);
+  public EventBadge selectBadge(int totalPrice) {
+    return EventBadge.calculateEventBadge(totalPrice);
   }
 
 
