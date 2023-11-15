@@ -1,9 +1,13 @@
-package christmas;
+package christmas.controller;
 
+import christmas.model.Benefits;
+import christmas.model.Date;
+import christmas.model.Orders;
+import christmas.model.Prices;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
-public class ControllerService {
+public class Controller {
 
   public static void dateRun() {
     OutputView.opening();
@@ -31,14 +35,15 @@ public class ControllerService {
   }
 
   public static void benefitsRun() {
+    Prices prices = new Prices(Orders.getOrders());
     Benefits benefits = new Benefits();
     OutputView.printOrderedMenu(Orders.getOrders());
-    OutputView.totalPrice(benefits.getTotalPrice());
-    OutputView.giftMenu(benefits.getPromotion());
+    OutputView.totalPrice(prices.getTotalPrice());
+    OutputView.giftMenu(benefits.selectPromotion(prices.getTotalPrice()));
     OutputView.displayBenefitsDetails(benefits.getBenefitsList());
     OutputView.displayTotalBenefitsAmount(benefits.getBenefits());
-    OutputView.afterDiscountPrice(benefits.getAfterDiscountPrice());
-    OutputView.badge(benefits.getBadge());
+    OutputView.afterDiscountPrice(prices.afterDiscountPrice(benefits.getBenefits()));
+    OutputView.badge(benefits.selectBadge(prices.getTotalPrice()));
   }
 
 }
