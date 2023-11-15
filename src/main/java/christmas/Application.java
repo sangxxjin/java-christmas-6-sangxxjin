@@ -1,12 +1,12 @@
 package christmas;
 
-import christmas.controller.ControllerService;
+import christmas.controller.Controller;
 public class Application {
 
   public static void main(String[] args) {
     // TODO: 프로그램 구현
-    ControllerService.dateRun();
-    ControllerService.ordersRun();
-    ControllerService.benefitsRun();
+    Controller.dateRun();
+    Controller.ordersRun();
+    Controller.benefitsRun();
   }
 }
