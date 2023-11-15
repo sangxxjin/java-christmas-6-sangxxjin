@@ -63,12 +63,14 @@ public class OutputView {
           String.format("%s: %s%,d원", CHRISTMAS_DDAY_DISCOUNT, MINUS, benefitsList.get(0)));
       if (Date.isFridayOrSaturday(Date.getDate())) {
         System.out.println(String.format("주말 할인: %s%,d원", MINUS, benefitsList.get(1)));
-      } else {
+      }
+      if (!Date.isFridayOrSaturday(Date.getDate())) {
         System.out.println(String.format("평일 할인: %s%,d원", MINUS, benefitsList.get(1)));
       }
       System.out.println(String.format("특별 할인: %s%,d원", MINUS, benefitsList.get(2)));
       System.out.println(String.format("증정 이벤트: %s%,d원" + "\n", MINUS, benefitsList.get(3)));
-    } else {
+    }
+    if (checkAllZero) {
       System.out.println("없음" + "\n");
     }
   }
@@ -77,10 +79,10 @@ public class OutputView {
     System.out.println(TOTAL_BENEFIT_AMOUNT);
     if (0 == benefits) {
       System.out.println("없음" + "\n");
-    } else {
+    }
+    if (0 != benefits) {
       System.out.println(String.format("%s%,d원" + "\n", MINUS, benefits));
     }
-    else System.out.println(MINUS+ benefits+"원"+"\n");
   }
 
   public static void afterDiscountPrice(int afterDiscountPrice) {
