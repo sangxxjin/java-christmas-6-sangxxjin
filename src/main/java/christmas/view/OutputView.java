@@ -26,14 +26,16 @@ public class OutputView {
   public static void previewEventBenefits(int date) {
     System.out.println(String.format("12월 %d일에%s", date, EVENT_PREVIEW));
   }
-  public static void printOrderedMenu(Map<MenuItem,Integer> orders) {
+
+  public static void printOrderedMenu(Map<MenuItem, Integer> orders) {
     System.out.println(ORDER_MENU_HEADER);
     for (Map.Entry<MenuItem, Integer> entry : orders.entrySet()) {
       System.out.println(String.format("%s %d개", entry.getKey().getName(), entry.getValue()));
     }
     System.out.println();
   }
-  public static void totalPrice(int totalPrice){
+
+  public static void totalPrice(int totalPrice) {
     System.out.println(TOTAL_ORDER_PRICE_BEFORE_DISCOUNT);
     System.out.println(String.format("%,d원", totalPrice) + "\n");
   }
@@ -47,7 +49,8 @@ public class OutputView {
       System.out.println("없음"+"\n");
     }
   }
-  public static void benefitsDetails(List<Integer> benefitsList){
+
+  public static void benefitsDetails(List<Integer> benefitsList) {
     System.out.println(BENEFITS_DETAILS);
     boolean checkAllZero = true;
     for (Integer value : benefitsList) {
@@ -69,7 +72,8 @@ public class OutputView {
       System.out.println("없음" + "\n");
     }
   }
-  public static void totalBenfitsAmount(int benefits){
+
+  public static void totalBenefitsAmount(int benefits) {
     System.out.println(TOTAL_BENEFIT_AMOUNT);
     if (0 == benefits) {
       System.out.println("없음" + "\n");
@@ -78,11 +82,13 @@ public class OutputView {
     }
     else System.out.println(MINUS+ benefits+"원"+"\n");
   }
-  public static void afterDiscountPrice(int afterDiscountPrice){
+
+  public static void afterDiscountPrice(int afterDiscountPrice) {
     System.out.println(EXPECTED_PAYMENT_AMOUNT_AFTER_DISCOUNT);
     System.out.println(String.format("%,d원" + "\n", afterDiscountPrice));
   }
-  public static void badge(String badge){
+
+  public static void badge(String badge) {
     System.out.println(DECEMBER_EVENT_BADGE_MESSAGE);
     System.out.println(badge);
   }
