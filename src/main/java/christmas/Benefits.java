@@ -96,7 +96,9 @@ public class Benefits {
 
   public void afterDiscountPrice() {
     afterDiscountPrice = totalPrice - benefits;
-    if (promotion)afterDiscountPrice+=25000;
+    if (promotion) {
+      afterDiscountPrice += 25000;
+    }
   }
 
   public void selectBadge(int totalPrice) {
