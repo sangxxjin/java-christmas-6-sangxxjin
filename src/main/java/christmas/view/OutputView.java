@@ -43,10 +43,10 @@ public class OutputView {
   public static void giftMenu(boolean giftMenu) {
     System.out.println(GIFT_MENU);
     if (giftMenu) {
-      System.out.println("샴페인 1개"+"\n");
+      System.out.println("샴페인 1개" + "\n");
     }
     if (!giftMenu) {
-      System.out.println("없음"+"\n");
+      System.out.println("없음" + "\n");
     }
   }
 
