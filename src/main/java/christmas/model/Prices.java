@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Prices {
 
-  private static int totalPrice;
+  private int totalPrice;
 
   public Prices(Map<MenuItem, Integer> orders) {
     calculateTotalPrice(orders);
@@ -27,7 +27,7 @@ public class Prices {
     return afterDiscountPrice;
   }
 
-  public static int getTotalPrice() {
+  public int getTotalPrice() {
     return totalPrice;
   }
 }
