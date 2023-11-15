@@ -36,7 +36,7 @@ public class ControllerService {
     OutputView.totalPrice(benefits.getTotalPrice());
     OutputView.giftMenu(benefits.getPromotion());
     OutputView.benefitsDetails(benefits.getBenefitsList());
-    OutputView.totalBenfitsAmount(benefits.getBenefits());
+    OutputView.totalBenefitsAmount(benefits.getBenefits());
     OutputView.afterDiscountPrice(benefits.getAfterDiscountPrice());
     OutputView.badge(benefits.getBadge());
   }
