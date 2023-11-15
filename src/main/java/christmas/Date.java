@@ -12,8 +12,9 @@ public class Date {
     try {
       int parsedDate = Integer.parseInt(dateString);
       if (isValidDate(parsedDate)) {
-        this.date = LocalDate.of(2023,12,parsedDate);
-      } else {
+        this.date = LocalDate.of(2023, 12, parsedDate);
+      }
+      if (!isValidDate(parsedDate)) {
         throw new IllegalArgumentException(INVALID_DATE_MESSAGE);
       }
     } catch (NumberFormatException e) {
@@ -30,7 +31,7 @@ public class Date {
     return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
   }
 
-  public static boolean isSpecialDay(LocalDate date){
+  public static boolean isSpecialDay(LocalDate date) {
     DayOfWeek dayOfWeek = date.getDayOfWeek();
     return dayOfWeek == DayOfWeek.SUNDAY || date.getDayOfMonth() == 25;
   }
