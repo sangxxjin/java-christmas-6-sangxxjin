@@ -11,7 +11,6 @@ public class Date {
   private static final int EVENT_START_DATE = 1;
   private static final int EVENT_END_DATE = 31;
   private static final int CHRISTMAS_DDAY = 25;
-
   private static final String INVALID_DATE_MESSAGE = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
 
   public Date(String dateString) {
