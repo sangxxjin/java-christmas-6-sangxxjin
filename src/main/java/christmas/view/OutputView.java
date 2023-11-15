@@ -51,7 +51,7 @@ public class OutputView {
     }
   }
 
-  public static void displayBenefitsDetails(List<Integer> benefitsList) {
+  public static void displayBenefitsDetails(List<Integer> benefitsList,Date date) {
     System.out.println(BENEFITS_DETAILS);
     boolean areAllValuesZero = true;
     for (Integer value : benefitsList) {
@@ -62,10 +62,10 @@ public class OutputView {
     if (!areAllValuesZero) {
       System.out.println(
           String.format("%s: %s%,d원", CHRISTMAS_DDAY_DISCOUNT, MINUS_SIGN, benefitsList.get(0)));
-      if (Date.isFridayOrSaturday(Date.getDate())) {
+      if (date.isFridayOrSaturday(date.getDate())) {
         System.out.println(String.format("주말 할인: %s%,d원", MINUS_SIGN, benefitsList.get(1)));
       }
-      if (!Date.isFridayOrSaturday(Date.getDate())) {
+      if (!date.isFridayOrSaturday(date.getDate())) {
         System.out.println(String.format("평일 할인: %s%,d원", MINUS_SIGN, benefitsList.get(1)));
       }
       System.out.println(String.format("특별 할인: %s%,d원", MINUS_SIGN, benefitsList.get(2)));
