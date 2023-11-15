@@ -52,7 +52,7 @@ public class Benefits {
     benefits += benefitsList.get(1);
   }
 
-  public void specialDiscount() {
+  private void specialDiscount() {
     if (Date.isSpecialDay(Date.getDate())) {
       benefitsList.add(SPECIAL_DISCOUNT_PRICE);
     } else {
