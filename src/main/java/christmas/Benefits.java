@@ -41,7 +41,8 @@ public class Benefits {
   private void selectGift() {
     if (totalPrice > 120000) {
       promotion = true;
-    } else {
+    }
+    if (totalPrice <= 120000) {
       promotion = false;
     }
   }
