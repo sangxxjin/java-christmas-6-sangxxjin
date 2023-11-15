@@ -21,7 +21,7 @@ public class Prices {
 
   public int afterDiscountPrice(int benefits) {
     int afterDiscountPrice = totalPrice - benefits;
-    if (totalPrice > 120000) {
+    if (totalPrice >= 120000) {
       afterDiscountPrice += MenuItem.CHAMPAGNE.getPrice();
     }
     return afterDiscountPrice;
