@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class OutputView {
 
-  private final static String MINUS = "-";
+  private final static String MINUS_SIGN = "-";
   private final static String OPENING = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
   private final static String EVENT_PREVIEW = " 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
   private final static String ORDER_MENU_HEADER = "<주문 메뉴>";
@@ -50,38 +50,38 @@ public class OutputView {
     }
   }
 
-  public static void benefitsDetails(List<Integer> benefitsList) {
+  public static void displayBenefitsDetails(List<Integer> benefitsList) {
     System.out.println(BENEFITS_DETAILS);
-    boolean checkAllZero = true;
+    boolean areAllValuesZero = true;
     for (Integer value : benefitsList) {
       if (value != 0) {
-        checkAllZero = false;
+        areAllValuesZero = false;
       }
     }
-    if (!checkAllZero) {
+    if (!areAllValuesZero) {
       System.out.println(
-          String.format("%s: %s%,d원", CHRISTMAS_DDAY_DISCOUNT, MINUS, benefitsList.get(0)));
+          String.format("%s: %s%,d원", CHRISTMAS_DDAY_DISCOUNT, MINUS_SIGN, benefitsList.get(0)));
       if (Date.isFridayOrSaturday(Date.getDate())) {
-        System.out.println(String.format("주말 할인: %s%,d원", MINUS, benefitsList.get(1)));
+        System.out.println(String.format("주말 할인: %s%,d원", MINUS_SIGN, benefitsList.get(1)));
       }
       if (!Date.isFridayOrSaturday(Date.getDate())) {
-        System.out.println(String.format("평일 할인: %s%,d원", MINUS, benefitsList.get(1)));
+        System.out.println(String.format("평일 할인: %s%,d원", MINUS_SIGN, benefitsList.get(1)));
       }
-      System.out.println(String.format("특별 할인: %s%,d원", MINUS, benefitsList.get(2)));
-      System.out.println(String.format("증정 이벤트: %s%,d원" + "\n", MINUS, benefitsList.get(3)));
+      System.out.println(String.format("특별 할인: %s%,d원", MINUS_SIGN, benefitsList.get(2)));
+      System.out.println(String.format("증정 이벤트: %s%,d원" + "\n", MINUS_SIGN, benefitsList.get(3)));
     }
-    if (checkAllZero) {
+    if (areAllValuesZero) {
       System.out.println("없음" + "\n");
     }
   }
 
-  public static void totalBenefitsAmount(int benefits) {
+  public static void displayTotalBenefitsAmount(int benefits) {
     System.out.println(TOTAL_BENEFIT_AMOUNT);
     if (0 == benefits) {
       System.out.println("없음" + "\n");
     }
     if (0 != benefits) {
-      System.out.println(String.format("%s%,d원" + "\n", MINUS, benefits));
+      System.out.println(String.format("%s%,d원" + "\n", MINUS_SIGN, benefits));
     }
   }
 
