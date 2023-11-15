@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Orders {
 
-  private static Map<MenuItem, Integer> orders = new HashMap<>();
+  private Map<MenuItem, Integer> orders = new HashMap<>();
   private static final String INVALID_ORDER_MESSAGE = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
 
 
@@ -71,7 +71,7 @@ public class Orders {
     return null;
   }
 
-  public static Map<MenuItem, Integer> getOrders() {
+  public  Map<MenuItem, Integer> getOrders() {
     return orders;
   }
 
