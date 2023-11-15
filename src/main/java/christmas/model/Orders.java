@@ -1,4 +1,4 @@
-package christmas;
+package christmas.model;
 
 import christmas.enums.MenuItem;
 import java.util.HashMap;
