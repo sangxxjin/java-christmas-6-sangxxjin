@@ -1,6 +1,6 @@
 package christmas.view;
 
-import christmas.Date;
+import christmas.model.Date;
 import christmas.enums.EventBadge;
 import christmas.enums.MenuItem;
 import java.util.List;
