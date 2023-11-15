@@ -24,18 +24,18 @@ public class OutputView {
   }
 
   public static void previewEventBenefits(int date) {
-    System.out.println("12월 " + date + "일에" + EVENT_PREVIEW);
+    System.out.println(String.format("12월 %d일에%s", date, EVENT_PREVIEW));
   }
   public static void printOrderedMenu(Map<MenuItem,Integer> orders) {
     System.out.println(ORDER_MENU_HEADER);
     for (Map.Entry<MenuItem, Integer> entry : orders.entrySet()) {
-      System.out.println(entry.getKey().getName() + " " + entry.getValue() + "개");
+      System.out.println(String.format("%s %d개", entry.getKey().getName(), entry.getValue()));
     }
     System.out.println();
   }
   public static void totalPrice(int totalPrice){
     System.out.println(TOTAL_ORDER_PRICE_BEFORE_DISCOUNT);
-    System.out.println(totalPrice+"원"+"\n");
+    System.out.println(String.format("%,d원", totalPrice) + "\n");
   }
 
   public static void giftMenu(boolean giftMenu) {
@@ -56,29 +56,31 @@ public class OutputView {
       }
     }
     if (!checkAllZero) {
-      System.out.println(CHRISTMAS_DDAY_DISCOUNT + ": " + MINUS + benefitsList.get(0) + "원");
+      System.out.println(
+          String.format("%s: %s%,d원", CHRISTMAS_DDAY_DISCOUNT, MINUS, benefitsList.get(0)));
       if (Date.isFridayOrSaturday(Date.getDate())) {
-        System.out.println("주말 할인: " + MINUS + benefitsList.get(1) + "원");
+        System.out.println(String.format("주말 할인: %s%,d원", MINUS, benefitsList.get(1)));
+      } else {
+        System.out.println(String.format("평일 할인: %s%,d원", MINUS, benefitsList.get(1)));
       }
-      if (!Date.isFridayOrSaturday(Date.getDate())) {
-        System.out.println("평일 할인: " + MINUS + benefitsList.get(1) + "원");
-      }
-      System.out.println("특별 할인: " + MINUS + benefitsList.get(2) + "원");
-      System.out.println("증정 이벤트: " + MINUS + benefitsList.get(3) + "원"+"\n");
+      System.out.println(String.format("특별 할인: %s%,d원", MINUS, benefitsList.get(2)));
+      System.out.println(String.format("증정 이벤트: %s%,d원" + "\n", MINUS, benefitsList.get(3)));
     } else {
-      System.out.println("없음"+"\n");
+      System.out.println("없음" + "\n");
     }
   }
   public static void totalBenfitsAmount(int benefits){
     System.out.println(TOTAL_BENEFIT_AMOUNT);
     if (0 == benefits) {
-      System.out.println("없음"+"\n");
+      System.out.println("없음" + "\n");
+    } else {
+      System.out.println(String.format("%s%,d원" + "\n", MINUS, benefits));
     }
     else System.out.println(MINUS+ benefits+"원"+"\n");
   }
   public static void afterDiscountPrice(int afterDiscountPrice){
     System.out.println(EXPECTED_PAYMENT_AMOUNT_AFTER_DISCOUNT);
-    System.out.println(afterDiscountPrice+"원"+"\n");
+    System.out.println(String.format("%,d원" + "\n", afterDiscountPrice));
   }
   public static void badge(String badge){
     System.out.println(DECEMBER_EVENT_BADGE_MESSAGE);
