@@ -1,5 +1,6 @@
 package christmas;
 
+import christmas.enums.EventBadge;
 import christmas.enums.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
@@ -93,16 +94,8 @@ public class Benefits {
     if (promotion)afterDiscountPrice+=25000;
   }
 
-  public void selectBadge() {
-    if (benefits > 20000) {
-      Badge = "산타";
-    } else if (benefits > 10000) {
-      Badge = "트리";
-    } else if (benefits > 5000) {
-      Badge = "별";
-    } else {
-      Badge = "없음";
-    }
+  public void selectBadge(int totalPrice) {
+    Badge = EventBadge.calculateEventBadge(totalPrice);
   }
 
   public static int getTotalPrice() {
@@ -125,7 +118,7 @@ public class Benefits {
     return afterDiscountPrice;
   }
 
-  public static String getBadge() {
+  public static EventBadge getBadge() {
     return Badge;
   }
 }
