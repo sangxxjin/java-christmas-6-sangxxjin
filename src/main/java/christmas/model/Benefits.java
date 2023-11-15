@@ -61,8 +61,8 @@ public class Benefits {
     benefits += benefitsList.get(2);
   }
 
-  public void promotion() {
-    if (promotion) {
+  private void promotion(int totalPrices) {
+    if (totalPrices>120000) {
       benefitsList.add(25000);
       benefits += benefitsList.get(3);
     } else {
