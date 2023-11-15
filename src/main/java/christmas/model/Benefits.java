@@ -23,11 +23,9 @@ public class Benefits {
 
   public boolean selectPromotion(int totalPrice) {
     if (totalPrice > 120000) {
-      promotion = true;
+      return true;
     }
-    if (totalPrice <= 120000) {
-      promotion = false;
-    }
+    return false;
   }
 
   private void christmasDiscount() {
